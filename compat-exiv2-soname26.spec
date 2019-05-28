@@ -4,9 +4,9 @@
 #
 Name     : compat-exiv2-soname26
 Version  : 0.26.trunk
-Release  : 1
-URL      : http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
-Source0  : http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
+Release  : 2
+URL      : http://www.exiv2.org/releases/exiv2-0.26-trunk.tar.gz
+Source0  : http://www.exiv2.org/releases/exiv2-0.26-trunk.tar.gz
 Summary  : Image metadata library and tools
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0
@@ -54,7 +54,6 @@ j@@@#Robin",                     Brad                     /@@@Thomas@@@@Q
 Summary: bin components for the compat-exiv2-soname26 package.
 Group: Binaries
 Requires: compat-exiv2-soname26-license = %{version}-%{release}
-Requires: compat-exiv2-soname26-man = %{version}-%{release}
 
 %description bin
 bin components for the compat-exiv2-soname26 package.
@@ -66,6 +65,7 @@ Group: Development
 Requires: compat-exiv2-soname26-lib = %{version}-%{release}
 Requires: compat-exiv2-soname26-bin = %{version}-%{release}
 Provides: compat-exiv2-soname26-devel = %{version}-%{release}
+Requires: compat-exiv2-soname26 = %{version}-%{release}
 
 %description dev
 dev components for the compat-exiv2-soname26 package.
@@ -126,7 +126,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543944916
+export SOURCE_DATE_EPOCH=1559029976
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -135,7 +136,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1543944916
+export SOURCE_DATE_EPOCH=1559029976
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/compat-exiv2-soname26
 cp COPYING %{buildroot}/usr/share/package-licenses/compat-exiv2-soname26/COPYING
